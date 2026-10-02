@@ -83,55 +83,15 @@ design system, linter, design tokens, variables, modes, slots, audit, accessibil
 
 Es opcional. Figma lo revisa en hasta dos semanas, y mientras tanto el plugin se puede publicar y actualizar. Cuando lo aprueba, la ficha enseña las respuestas a quien tenga la sesión iniciada. Las preguntas son las de «Security disclosure principles», en el centro de ayuda de Figma (comprobadas el 02-10-2026), y las respuestas se han contrastado con el código: el manifiesto, `src/settings.ts` y `src/ignore.ts`.
 
-Respuestas en inglés, para copiar:
+En el formulario (paso 3 de la publicación, visto el 02-10-2026) las preguntas son de opciones, sin texto libre. Las que corresponden a DoD Lint:
 
-**1. Do you host a backend service for your plugin or widget?** → **No**
+1. **Backend:** «No, I do not host a backend service for my plugin/widget.»
+2. **Peticiones de red:** solo «My plugin/widget does not make any network requests.» El manifiesto declara `allowedDomains: ["none"]`, y el panel no carga fuentes, scripts ni imágenes de fuera.
+3. **Autenticación:** «No, my plugin/widget does not require or use any user authentication.» Tampoco lee quién es el usuario.
+4. **Almacenamiento:** solo «Yes, my plugin/widget stores data read/derived from Figma's plugin API locally (eg. localStorage, figma.clientStorage, or node.setPluginData).» Los ajustes que difieren de los valores por defecto y los hallazgos ignorados (regla, capa y fecha) van en el pluginData del archivo, y el idioma en clientStorage. «No» no vale, porque los ajustes guardan identificadores de colecciones y los ignorados, de capas. Nada se guarda fuera de Figma.
+5. **Actualizaciones:** «I am a solo developer. I manage and update my plugin/widget myself.»
 
-```
-DoD Lint has no backend. It runs entirely inside Figma: the plugin code in Figma's sandbox and the panel in Figma's plugin window.
-```
-
-Las preguntas 1b (proceso para vulnerabilidades) y 1c (certificaciones de seguridad) solo se piden con un backend: no aplican.
-
-**2. Does your plugin or widget make network requests with services you don't host?** → **No**
-
-```
-DoD Lint makes no network requests. Its manifest declares "networkAccess": { "allowedDomains": ["none"] }, so Figma blocks any request, and the panel loads no external fonts, scripts or images.
-```
-
-**3. Does your plugin or widget have user authentication?** → **No**
-
-```
-There are no accounts, sign-ins or credentials, and the plugin doesn't read who the user is.
-```
-
-La 3b (cómo se protegen las credenciales) no aplica.
-
-**4. Do you store any data read or derived from Figma's plugin or widget API?** → **Sí, solo con el almacenamiento de Figma.** Si el formulario solo deja elegir «Yes» o «No», «Yes» con este texto:
-
-```
-Only in the storage Figma provides; nothing leaves Figma.
-
-- In the file's plugin data: the audit settings that differ from the defaults (enabled checks, thresholds, the IDs of the variable collections marked as primitive, traversal options) and the findings a user chose to ignore (check ID, layer ID and the date). They are kept in the file so that everyone who opens it with DoD Lint audits with the same settings, and they are only written when someone saves the settings or ignores or restores a finding.
-- In Figma's client storage, on the user's computer: the interface language.
-
-Audits only read the file. Findings and reports stay in the plugin window and are gone when it closes, unless the user copies or downloads the Markdown report.
-```
-
-La 4b (cómo y dónde se guarda) y la 4c (quién accede) solo se piden si algo se guarda fuera de Figma. Si aun así salen:
-
-```
-4b. In the Figma file's plugin data and in Figma's client storage. Nothing is stored outside Figma.
-4c. Anyone who can open the file can see its settings and ignored findings through DoD Lint. The language stays on the user's computer. The developer has no access to any of it.
-```
-
-**5. How do you manage updates to your plugin?**
-
-```
-The source code is public at https://github.com/jm-fuster/dod-lint, where bugs and questions are tracked as issues. Before each release the code is type-checked, passes an automated suite of more than 200 tests that run every check against a simulated Figma API, and is tried in Figma Desktop. Updates ship only as new versions published to Figma Community. The plugin has no network access and loads no code at run time, so what runs is always the published version. It has no runtime dependencies; the build only uses esbuild and TypeScript.
-```
-
-La primera frase da por hecho que el repositorio ya es público. Si el formulario se envía antes, hay que quitarla.
+Hay que dejar marcada «Acepto compartir esta información» para que las respuestas salgan en la ficha.
 
 ## Precio
 
@@ -167,7 +127,7 @@ Un archivo de Community con componentes y pantallas preparados para que se prueb
 
 ## Antes de enviar
 
-- [ ] Crear el plugin en Figma (Plugins → Development → New plugin) y copiar su `id` a `manifest.json`.
+- [x] Plugin creado en Figma y su `id` en `manifest.json`: `1687960342520583098` (02-10-2026, generado en el formulario de publicación).
 - [ ] Probar el build en Figma Desktop importando el manifiesto: auditoría, selección de hallazgos, correcciones, Cancelar, redimensionar, informe y los dos idiomas.
 - [x] Build de lanzamiento gratuito (01-10-2026): sin el permiso `payments` en el manifiesto, archivo, correcciones e informe quedan desbloqueados, sin la insignia Pro ni los candados, y el pie dice «Gratis, y sin conexión a internet: todo se queda en Figma» (desde el 02-10-2026, al pasar a gratis del todo). El código de pago se conserva, inactivo, y `docs/support.md` no habla de Pro.
 - [ ] Compilar con `node scripts/build.mjs --prod`. Comprobado el 02-10-2026 (`code.js` 98 KB, `ui.html` 79 KB, sin avisos de depuración); repetirlo justo antes de enviar, ya con el `id` real.
