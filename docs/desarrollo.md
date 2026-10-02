@@ -62,6 +62,7 @@ flowchart LR
 | `src/standalone.ts` | Bundle sin UI para probar las reglas desde una consola |
 | `scripts/build.mjs` | Build con esbuild |
 | `scripts/support-page.mjs` | La página de soporte con la marca (`docs/site/index.html`), a partir de `docs/support.md` |
+| `.github/workflows/pages.yml` | Publica la página de soporte en GitHub Pages, solo con el repositorio público |
 | `scripts/test.mjs` | Empaqueta las pruebas y las pasa por el runner de Node |
 | `test/` | Pruebas con un Figma simulado (`test/figma.ts`) |
 | `docs/` | Ficha de Community, página de soporte, marca (`docs/brand.md`), estas notas e imágenes de los README |
@@ -211,6 +212,16 @@ Decisión del 02-10-2026: se publica gratis, todo y desde el primer día. Los te
 3. Publicar como plugin gratuito desde el perfil personal, no desde un equipo: si el plugin vive en un equipo, los ajustes de precio se desactivan, y harían falta si algún día se añade una función de pago.
 
 Reglas de revisión que este plugin respeta: no ofrece chat de IA ni servidor MCP, no accede a la red (`allowedDomains: ["none"]`) y hace exactamente lo que describe.
+
+### Abrir el repositorio
+
+El repositorio es privado hasta que se publique el plugin. Para abrirlo:
+
+1. Pasarlo a público: `gh repo edit jm-fuster/dod-lint --visibility public --accept-visibility-change-consequences`.
+2. Activar Pages con GitHub Actions como origen: `gh api -X POST repos/jm-fuster/dod-lint/pages -f build_type=workflow`. En el plan gratuito no se puede antes, con el repositorio privado.
+3. Publicar la página de soporte: `gh workflow run pages.yml`. Queda en https://jm-fuster.github.io/dod-lint/, y desde entonces se vuelve a publicar sola con cada cambio de `docs/support.md`, `docs/site/` o `scripts/support-page.mjs` en `main`. Mientras el repositorio era privado, el flujo se saltaba sin hacer nada.
+4. Ponerla como web del repositorio: `gh repo edit jm-fuster/dod-lint --homepage https://jm-fuster.github.io/dod-lint/`.
+5. A mano, en GitHub: el banner (`docs/readme/en/banner.png`) como vista previa social, en Settings del repositorio, y «Keep my email addresses private» en la cuenta.
 
 <details>
 <summary><b>Si algún día se añade una función de pago</b></summary>

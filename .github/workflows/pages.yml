@@ -1,0 +1,44 @@
+# Publica la página de soporte (docs/site) en GitHub Pages: https://jm-fuster.github.io/dod-lint/
+# Mientras el repositorio sea privado no hace nada: en el plan gratuito, Pages solo funciona con repositorios públicos.
+# Antes de la primera vez hay que activar Pages con GitHub Actions como origen (ver «Abrir el repositorio» en docs/desarrollo.md).
+name: Página de soporte
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/support.md
+      - docs/site/**
+      - scripts/support-page.mjs
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      # La página sale de docs/support.md: se vuelve a generar por si se cambió el texto sin regenerarla.
+      - run: node scripts/support-page.mjs
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs/site
+      - id: deployment
+        uses: actions/deploy-pages@v5

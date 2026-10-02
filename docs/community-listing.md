@@ -54,11 +54,11 @@ DoD Lint runs entirely inside Figma and has no network access. Your language sta
 
 Languages: the interface is in English and Spanish. Component, state and size names are recognized in English, Spanish, French, German, Portuguese and Italian.
 
-Help, documentation and privacy policy: [SUPPORT_URL]
+Help, documentation and privacy policy: https://jm-fuster.github.io/dod-lint/
 ```
 
 Notas:
-- `[SUPPORT_URL]` se sustituye por la página de soporte (ver `docs/support.md`) cuando esté publicada.
+- La URL de soporte es la página de GitHub Pages. Funciona en cuanto el repositorio sea público y Pages esté activado (ver «Abrir el repositorio» en `docs/desarrollo.md`).
 - La ficha solo describe lo que ya hace el build que se envía. La migración a Slots y el informe para MCP del plan se añaden a la ficha cuando existan: la revisión rechaza plugins que no hacen lo que dicen.
 - No se menciona Check designs ni ningún otro producto: la política permite rechazar plugins que "recreen funcionalidad de Figma", y compararse con el linter nativo solo llama la atención sobre eso.
 
@@ -74,7 +74,7 @@ design system, linter, design tokens, variables, modes, slots, audit, accessibil
 
 ## Detalles finales
 
-- **Contacto de soporte:** la URL de la página de soporte.
+- **Contacto de soporte:** https://jm-fuster.github.io/dod-lint/, la página de soporte.
 - **Acceso a red:** `None`. Coincide con el manifiesto (`allowedDomains: ["none"]`).
 - **Comentarios:** activados. Son la primera vía de feedback y dan señal social a la ficha.
 - **Seguridad de datos:** rellenarlo con las respuestas de la sección siguiente. Casi todas son «no», salvo la del almacenamiento: los ajustes y los ignorados se guardan en el archivo, con el almacenamiento de Figma.
@@ -172,7 +172,7 @@ Un archivo de Community con componentes y pantallas preparados para que se prueb
 - [x] Build de lanzamiento gratuito (01-10-2026): sin el permiso `payments` en el manifiesto, archivo, correcciones e informe quedan desbloqueados, sin la insignia Pro ni los candados, y el pie dice «Gratis, y sin conexión a internet: todo se queda en Figma» (desde el 02-10-2026, al pasar a gratis del todo). El código de pago se conserva, inactivo, y `docs/support.md` no habla de Pro.
 - [ ] Compilar con `node scripts/build.mjs --prod`. Comprobado el 02-10-2026 (`code.js` 98 KB, `ui.html` 79 KB, sin avisos de depuración); repetirlo justo antes de enviar, ya con el `id` real.
 - [ ] Cuenta: doble factor activado.
-- [ ] Página de soporte publicada y su URL en la descripción. Ya está hecha con la marca: `docs/site/index.html`, que sale de `docs/support.md` con `npm run support-page`. Falta alojarla. El contacto son los issues del repositorio, que funcionan en cuanto sea público.
+- [ ] Página de soporte publicada en https://jm-fuster.github.io/dod-lint/. La publica `.github/workflows/pages.yml`, que la regenera desde `docs/support.md`, en cuanto el repositorio sea público y Pages esté activado: ver «Abrir el repositorio» en `docs/desarrollo.md`. El contacto son los issues del repositorio.
 - [x] Miniatura e imágenes del carrusel, rehechas con la UI nueva y la marca (02-10-2026). Icono nuevo: `docs/listing/icon-128.png`.
 - [ ] Formulario de seguridad de datos, con las respuestas de [su sección](#formulario-de-seguridad-de-datos).
 

@@ -1,5 +1,6 @@
 // Página de soporte con la marca (docs/brand.md), generada a partir de docs/support.md.
-// Uso: node scripts/support-page.mjs → docs/site/index.html. Alojarla es aparte: este script no publica nada.
+// Uso: node scripts/support-page.mjs → docs/site/index.html. La publica en GitHub Pages .github/workflows/pages.yml, que antes
+// la vuelve a generar.
 // El Markdown que entiende es el que usa support.md: títulos, párrafos, listas con un nivel anidado, tablas,
 // negrita, código y enlaces. Un párrafo que empieza con una línea toda en negrita es una pregunta de las FAQ.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
