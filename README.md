@@ -114,4 +114,8 @@ To load it in Figma Desktop: **Plugins → Development → Import plugin from ma
 
 How it's built, the decisions behind each check, the tests and the performance measurements are in the [development notes](docs/desarrollo.md), in Spanish.
 
+## License
+
+DoD Lint has no open-source license: all rights are reserved. The code is public so you can read it, learn from it and report issues, but you may not reuse it in other projects or publish it as your own plugin.
+
 <p align="center"><br><img src="docs/listing/mark.svg" alt="" width="32"></p>

@@ -215,7 +215,7 @@ Reglas de revisión que este plugin respeta: no ofrece chat de IA ni servidor MC
 
 ### Abrir el repositorio
 
-El repositorio es privado hasta que se publique el plugin. Para abrirlo:
+El repositorio es privado hasta que se publique el plugin. Va sin licencia (decisión del 02-10-2026): todos los derechos reservados, como explican los README. Se puede pasar a MIT más adelante; al revés no, porque lo publicado con MIT se queda con MIT. Para abrirlo:
 
 1. Pasarlo a público: `gh repo edit jm-fuster/dod-lint --visibility public --accept-visibility-change-consequences`.
 2. Activar Pages con GitHub Actions como origen: `gh api -X POST repos/jm-fuster/dod-lint/pages -f build_type=workflow`. En el plan gratuito no se puede antes, con el repositorio privado.

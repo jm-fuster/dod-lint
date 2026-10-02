@@ -2,6 +2,7 @@
   "name": "dod-lint",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
   "description": "Definición de hecho para sistemas de diseño en Figma: 15 comprobaciones (también de slots y de contraste en todos los modos), informe en Markdown y correcciones seguras.",
   "scripts": {
     "build": "node scripts/build.mjs",
