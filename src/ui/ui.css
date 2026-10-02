@@ -1,0 +1,260 @@
+:root {
+  --bg: var(--figma-color-bg, #fff);
+  --bg-2: var(--figma-color-bg-secondary, #f5f5f5);
+  --bg-hover: var(--figma-color-bg-hover, #f0f0f0);
+  --bg-selected: var(--figma-color-bg-selected, #e5f4ff);
+  --text: var(--figma-color-text, #1e1e1e);
+  --text-2: var(--figma-color-text-secondary, #6b6b6b);
+  --text-3: var(--figma-color-text-tertiary, #9a9a9a);
+  --border: var(--figma-color-border, #e6e6e6);
+  --brand: var(--figma-color-bg-brand, #0d99ff);
+  --brand-text: var(--figma-color-text-onbrand, #fff);
+  --brand-hover: var(--figma-color-bg-brand-hover, #007be5);
+  --brand-fg: var(--figma-color-text-brand, #007be5);
+  --danger: var(--figma-color-icon-danger, #e03e1a);
+  --warning: var(--figma-color-icon-warning, #f2a33c);
+  --info: var(--figma-color-icon-secondary, #8f8f8f);
+  --success: var(--figma-color-icon-success, #14ae5c);
+  /* Verde para texto: el de icono, #14ae5c, se queda en 2,9:1 sobre blanco. */
+  --success-fg: var(--figma-color-text-success, #008043);
+  /* Fondo de «Corregir todas»: verde oscuro para que el texto blanco se lea (5:1). */
+  --fix-strong: #008043;
+  --pro: var(--figma-color-bg-component, #9747ff);
+  --pro-text: var(--figma-color-text-oncomponent, #fff);
+  --radius: 6px;
+  --font: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+/* Solo desplaza el cuerpo de cada vista; la página entera no debe moverse nunca. */
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body {
+  font: 11px/16px var(--font);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+/* Barras finas y sin flechas; en Windows, Chromium dibuja las clásicas. */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-button { display: none; }
+::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
+::-webkit-scrollbar-thumb { border: 2px solid transparent; border-radius: 5px; background: color-mix(in srgb, var(--text) 22%, transparent) padding-box; }
+::-webkit-scrollbar-thumb:hover { background-color: color-mix(in srgb, var(--text) 40%, transparent); }
+#app { display: flex; flex-direction: column; height: 100vh; }
+.ico { width: 16px; height: 16px; flex: none; display: block; }
+.ico.sm { width: 12px; height: 12px; }
+.ico.xs { width: 10px; height: 10px; }
+/* Iconos de trazo: la forma va en la máscara (una regla por icono, desde ui.ts) y el color es el del texto. */
+.mask { background-color: currentColor; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; }
+.muted { color: var(--text-2); }
+.tiny { font-size: 10px; }
+.spacer { flex: 1; }
+/* Fijo: en el flujo, detrás de #app, alargaba la página 1 px y salía una segunda barra de desplazamiento. */
+.sr-only { position: fixed; top: 0; left: 0; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Cabecera */
+.subheader { display: flex; align-items: center; gap: 4px; height: 40px; padding: 0 12px 0 4px; border-bottom: 1px solid var(--border); flex: none; font-weight: 600; }
+.badge {
+  display: inline-flex; align-items: center; gap: 4px; height: 20px; padding: 0 8px;
+  border-radius: 10px; font-size: 10px; font-weight: 600; border: 1px solid var(--border); background: var(--bg); color: var(--text-2);
+}
+button.badge:hover { background: var(--bg-hover); color: var(--text); }
+.badge.pro { background: var(--pro); border-color: var(--pro); color: var(--pro-text); }
+.icon-btn { display: inline-grid; place-items: center; width: 28px; height: 28px; border: 0; border-radius: 5px; background: transparent; color: var(--text-2); padding: 0; }
+.icon-btn:hover { background: var(--bg-hover); color: var(--text); }
+
+/* Barra de alcance y auditoría, siempre visible */
+.bar { display: flex; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--border); flex: none; }
+.segmented { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 2px; border-radius: var(--radius); background: var(--bg-2); }
+.segmented button {
+  display: flex; align-items: center; justify-content: center; gap: 4px; height: 24px; border: 0; border-radius: 4px; background: transparent; color: var(--text-2); white-space: nowrap;
+}
+.segmented button:hover:not(:disabled) { color: var(--text); }
+.segmented button[aria-pressed='true'] { background: var(--bg); color: var(--text); font-weight: 600; box-shadow: 0 0 0 1px var(--border); }
+.segmented button:disabled { color: var(--text-3); cursor: not-allowed; }
+.segmented .count { font-size: 10px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px; background: var(--border); display: inline-grid; place-items: center; }
+.primary, .secondary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: var(--radius); font-weight: 600; white-space: nowrap; }
+.primary { border: 0; background: var(--brand); color: var(--brand-text); }
+.primary:hover { background: var(--brand-hover); }
+.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.secondary { border: 1px solid var(--border); background: var(--bg); font-weight: 500; }
+.secondary:hover { background: var(--bg-hover); }
+.secondary.small, .primary.small { height: 24px; padding: 0 8px; font-size: 10px; gap: 4px; }
+.bar .primary, .bar .secondary { min-width: 96px; }
+.progress { height: 2px; background: var(--bg-2); overflow: hidden; flex: none; }
+.progress > div { height: 100%; width: 30%; background: var(--brand); animation: slide 1.1s infinite ease-in-out; }
+@keyframes slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }
+.running { padding: 48px 28px; text-align: center; color: var(--text-2); }
+.running b { display: block; color: var(--text); font-size: 13px; line-height: 18px; margin: 14px 0 2px; }
+.running p { margin: 14px auto 0; max-width: 280px; }
+.spinner { width: 24px; height: 24px; margin: 0 auto; border-radius: 50%; border: 2px solid var(--border); border-top-color: var(--brand); animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Reglas, en ajustes */
+.rules-section { padding: 12px 0 4px; }
+.rules-section .section-title { padding: 0 12px; }
+.rules-section .section-title .muted { font-weight: 400; }
+.rules { padding: 0 0 8px; }
+.rules-actions { display: flex; gap: 12px; padding: 4px 12px 0; }
+.rules-link { display: inline-block; margin-top: 16px; }
+.link { border: 0; background: none; padding: 0; color: var(--brand-fg); font-weight: 500; }
+.link:hover { text-decoration: underline; }
+.cat { padding: 12px 12px 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
+.rule { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 8px; align-items: center; min-height: 28px; padding: 0 8px 0 12px; }
+.rule:hover { background: var(--bg-hover); }
+.rule input { margin: 0; }
+.rule .icon-btn { width: 24px; height: 24px; color: var(--text-3); }
+.rule .icon-btn[aria-expanded='true'] { color: var(--brand-fg); }
+.rule-desc { padding: 0 12px 8px 33px; color: var(--text-2); }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
+.dot.error { background: var(--danger); }
+.dot.warning { background: var(--warning); }
+.dot.info { background: var(--info); }
+
+/* Cuerpo */
+.body { flex: 1; overflow: auto; }
+.pad { padding: 12px; }
+.notice, .error-box { margin: 12px 12px 0; padding: 8px 10px; border-radius: var(--radius); background: var(--bg-2); display: flex; gap: 8px; align-items: center; }
+.notice { border-left: 3px solid var(--brand); }
+.error-box { border-left: 3px solid var(--danger); display: block; }
+.notice .icon-btn { width: 20px; height: 20px; margin-left: auto; }
+.filters .notice, .filters .error-box { margin: 0; }
+/* Aviso de abajo: los colores del tema al revés, como los avisos de Figma. Flota sobre el final de la lista. */
+.toast-slot { position: relative; height: 0; flex: none; z-index: 2; }
+.toast {
+  position: absolute; left: 12px; right: 12px; bottom: 8px; display: flex; align-items: center; gap: 4px;
+  min-height: 36px; padding: 4px 4px 4px 12px; border-radius: var(--radius); background: var(--text); color: var(--bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.toast > span:not(.ico) { flex: 1; }
+.toast-action { height: 24px; padding: 0 10px; border: 1px solid color-mix(in srgb, var(--bg) 45%, transparent); border-radius: 4px; background: transparent; color: inherit; font-weight: 600; white-space: nowrap; }
+.toast-action:hover, .toast .icon-btn:hover { background: color-mix(in srgb, var(--bg) 16%, transparent); color: inherit; }
+.toast .icon-btn { color: inherit; opacity: 0.75; }
+.toast .icon-btn:hover { opacity: 1; }
+/* Hueco al final para que la última fila pueda subir por encima del aviso. */
+.body.with-toast { padding-bottom: 52px; }
+
+/* Estado vacío */
+.empty { padding: 40px 28px; text-align: center; color: var(--text-2); }
+.empty .logo { width: 40px; height: 40px; margin: 0 auto 14px; color: var(--text); }
+.empty b { display: block; color: var(--text); font-size: 13px; line-height: 18px; margin-bottom: 6px; }
+.empty p { margin: 0 auto 16px; max-width: 300px; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+.tag { padding: 0 8px; height: 20px; line-height: 20px; border-radius: 10px; background: var(--bg-2); color: var(--text-2); font-size: 10px; }
+.ok { padding: 32px 24px; text-align: center; color: var(--text-2); }
+.ok b { color: var(--success); display: block; font-size: 13px; margin-bottom: 4px; }
+.ok .logo { width: 32px; height: 32px; margin: 0 auto 10px; }
+
+/* Filtros */
+.filters { position: sticky; top: 0; z-index: 1; display: flex; flex-direction: column; gap: 6px; padding: 8px 12px; background: var(--bg); border-bottom: 1px solid var(--border); }
+.stale { display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 10px; border-radius: var(--radius); background: var(--bg-selected); color: var(--brand-fg); }
+.stale > span:not(.ico) { flex: 1; color: var(--text); }
+.filters .sev { display: flex; flex-wrap: wrap; gap: 4px; }
+.filters .find { display: flex; align-items: center; gap: 6px; }
+.filters .find .chip { height: 26px; border-radius: 13px; flex: none; }
+.chip { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 8px; border: 1px solid var(--border); border-radius: 11px; background: var(--bg); color: var(--text-2); }
+.chip:hover { color: var(--text); }
+.chip b { color: var(--text); font-weight: 600; }
+.chip[aria-pressed='true'] { background: var(--bg-selected); border-color: var(--brand); color: var(--brand-fg); }
+.chip[aria-pressed='true'] b { color: var(--brand-fg); }
+.search { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; height: 26px; padding: 0 8px; border-radius: var(--radius); background: var(--bg-2); color: var(--text-3); }
+.search input { flex: 1; border: 0; background: transparent; outline: none; color: var(--text); min-width: 0; }
+.search input::placeholder { color: var(--text-3); }
+
+/* Grupos y filas */
+.group-head { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 8px 0 12px; }
+.group-head:hover { background: var(--bg-hover); }
+.group-toggle { flex: 1; display: flex; align-items: center; gap: 8px; height: 100%; min-width: 0; border: 0; background: transparent; padding: 0; text-align: left; }
+.group-toggle .title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.group-toggle .n { color: var(--text-2); }
+.group-toggle .ico { color: var(--text-3); transition: transform 0.12s; margin-left: -4px; }
+.group[data-open='false'] .group-toggle .ico { transform: rotate(-90deg); }
+/* Corregir, en la regla y en cada fila: lo que más se usa, así que destaca. */
+.fix-btn, .row-fix {
+  display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 8px; border-radius: 11px; white-space: nowrap;
+  border: 1px solid color-mix(in srgb, var(--success-fg) 40%, transparent); background: color-mix(in srgb, var(--success) 12%, var(--bg));
+  color: var(--success-fg); font-size: 10px; font-weight: 600;
+}
+.row-fix:hover { border-color: var(--success-fg); background: color-mix(in srgb, var(--success) 20%, var(--bg)); }
+/* Corregir todas las de una regla: macizo, porque toca varias capas de una vez. */
+.fix-btn { border-color: var(--fix-strong); background: var(--fix-strong); color: #fff; }
+.fix-btn:hover:not(:disabled) { border-color: var(--fix-strong); background: color-mix(in srgb, var(--fix-strong) 85%, #000); }
+.fix-btn:disabled { color: var(--text-3); cursor: not-allowed; }
+/* Una fila: lo que pasa y dónde (al pulsar, va a la capa), y a la derecha corregir e ignorar. */
+.finding-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; }
+.finding-row:hover { background: var(--bg-hover); }
+.finding-row[aria-current='true'] { background: var(--bg-selected); box-shadow: inset 2px 0 0 var(--brand); }
+.finding { display: grid; grid-template-columns: 8px minmax(0, 1fr) auto; gap: 8px; width: 100%; padding: 6px 4px 7px 32px; border: 0; background: transparent; text-align: left; }
+.row-actions { display: flex; align-items: center; gap: 2px; padding: 3px 8px 0 0; }
+.row-fix { max-width: 132px; }
+/* El hueco del botón de fila: en una regla con correcciones, del mismo ancho en todas sus filas. */
+.fix-slot { display: flex; justify-content: flex-end; }
+.with-fixes .fix-slot { width: 132px; }
+.row-fix > span:not(.ico) { overflow: hidden; text-overflow: ellipsis; }
+.finding-row .ignore { width: 22px; height: 22px; color: var(--text-3); opacity: 0.55; }
+.finding-row:hover .ignore, .finding-row:focus-within .ignore { opacity: 1; }
+.finding-row .ignore:hover { color: var(--text); }
+.finding .dot { margin-top: 4px; }
+.finding .msg { color: var(--text); font-weight: 500; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.flag { display: inline-block; margin-left: 6px; padding: 0 5px; border-radius: 4px; background: var(--bg-2); color: var(--text-2); font-size: 10px; font-weight: 400; line-height: 15px; vertical-align: 1px; }
+.finding .where { display: flex; align-items: center; gap: 4px; color: var(--text-2); font-size: 10px; line-height: 14px; margin-top: 2px; min-width: 0; }
+.finding .where > span:not(.ico) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Lo que no cabe se recorta por el medio de la ruta: se ven el número de variantes, el principio y la capa. */
+.finding .where > .place { display: flex; align-items: baseline; gap: 4px; min-width: 0; }
+.finding .where .place > * { flex: none; }
+.finding .where .place > .name { flex: 0 1 auto; min-width: 3em; overflow: hidden; text-overflow: ellipsis; }
+.finding .where .place > .mid { display: flex; flex: 0 1e9 auto; min-width: 0; overflow: hidden; }
+.finding .where .mid > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* Se acorta primero lo que agrupa, después el nombre del set y lo último la capa. Los pesos van muy separados: con
+   menos, la parte siguiente cedía una fracción de píxel y ya pintaba los puntos suspensivos («Butt…» cabiendo «Button»). */
+/* La carpeta se recorta por el principio («…ented button»): su final es lo más cercano al set. */
+.finding .where .mid > .group { flex: 0 1e12 auto; min-width: 0.8em; direction: rtl; text-align: left; }
+.finding .where .mid > .set { flex: 0 1e6 auto; }
+.finding .where .mid > .layer { flex: 0 1 auto; }
+.finding .where .ico { color: var(--text-3); }
+.finding:hover .where, .finding:focus-visible .where { color: var(--brand-fg); }
+.finding:hover .where .ico, .finding:focus-visible .where .ico { color: var(--brand-fg); }
+.finding .where b { color: var(--text); font-weight: 500; }
+.finding .note { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--text-3); font-size: 10px; line-height: 14px; margin-top: 2px; }
+.finding .side { display: flex; gap: 4px; align-items: flex-start; padding-top: 1px; }
+.finding .times { font-size: 10px; color: var(--text-2); background: var(--bg-2); border-radius: 8px; padding: 0 5px; line-height: 16px; }
+.more { width: 100%; height: 28px; border: 0; background: transparent; color: var(--brand-fg); font-weight: 500; }
+.more:hover { background: var(--bg-hover); }
+.notes { padding: 8px 12px 16px; color: var(--text-2); font-size: 10px; }
+
+/* Pie */
+.footer { position: relative; display: flex; gap: 8px; align-items: center; min-height: 40px; padding: 6px 20px 6px 12px; border-top: 1px solid var(--border); flex: none; }
+.grip { position: absolute; right: 2px; bottom: 2px; width: 14px; height: 14px; color: var(--text-3); cursor: nwse-resize; touch-action: none; }
+.grip:hover { color: var(--text); }
+
+/* Ajustes */
+.settings-note { margin: 0; padding: 12px 12px 0; }
+.section { padding: 12px 12px 4px; border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: 0; }
+.section-title { font-weight: 600; margin-bottom: 8px; }
+.field { display: grid; gap: 4px; margin-bottom: 12px; }
+.field label { font-weight: 500; }
+.help { color: var(--text-2); }
+.field input[type='text'], .field input[type='number'], .field textarea, .field select {
+  height: 28px; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 5px; padding: 0 8px;
+}
+.field input:focus, .field select:focus, .search:focus-within { outline: 1px solid var(--brand); outline-offset: -1px; }
+.toggle { display: flex; gap: 8px; align-items: flex-start; padding: 4px 0 8px; cursor: pointer; }
+.toggle input { margin: 2px 0 0; }
+.coll { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 6px 8px; border: 1px solid var(--border); border-radius: 5px; margin-bottom: 4px; }
+.coll .meta { color: var(--text-2); font-size: 10px; }
+.coll .badge { height: 18px; }
+
+/* Informe */
+.report textarea {
+  width: 100%; height: calc(100% - 28px); min-height: 280px; resize: none; color: var(--text); background: var(--bg-2); border: 1px solid var(--border); border-radius: 5px; padding: 8px;
+  font: 10px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Tema: los controles nativos siguen el esquema de Figma */
+/* En oscuro, el verde de Figma oscurecido: tal cual, el texto blanco se queda en 4,1:1. */
+html.figma-dark { color-scheme: dark; --fix-strong: color-mix(in srgb, var(--figma-color-bg-success, #198f51) 85%, #000); }
+html.figma-light { color-scheme: light; }
+#library-load { margin: 6px 0; }

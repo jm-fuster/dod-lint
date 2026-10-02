@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>DoD Lint · banner del README</title>
+    <style>
+      /* Banner del README, 1280 × 640 (se renderiza al doble). Abrirlo desde el repositorio: las fuentes son las de
+         la página de soporte. Marca y colores en docs/brand.md. */
+      @font-face { font-family: 'Geist'; src: url('../../site/fonts/Geist-Variable.woff2') format('woff2'); font-weight: 100 900; }
+      @font-face { font-family: 'Geist Mono'; src: url('../../site/fonts/GeistMono-Variable.woff2') format('woff2'); font-weight: 100 900; }
+      :root { --ink: #111318; --tile: #1c1f26; --text: #eef0f4; --muted: #a3a9b8; --lime: #d4ff3f; }
+      html, body { margin: 0; background: transparent; }
+      body { width: 1280px; height: 640px; overflow: hidden; font-family: Geist, sans-serif; -webkit-font-smoothing: antialiased; }
+      .card {
+        box-sizing: border-box; width: 1280px; height: 640px; border-radius: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        color: var(--text); background-color: var(--ink); background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.2px, transparent 1.2px); background-size: 32px 32px; background-position: 16px 16px;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      }
+      .logo { display: flex; align-items: center; gap: 32px; }
+      .logo svg { display: block; }
+      h1 { margin: 0; font-size: 136px; line-height: 1; letter-spacing: -0.045em; font-weight: 700; }
+      .mono { font-family: 'Geist Mono', monospace; font-weight: 500; color: var(--lime); letter-spacing: -0.02em; }
+      p { margin: 34px 0 44px; font-size: 34px; color: var(--muted); letter-spacing: -0.01em; }
+      .chips { display: flex; gap: 14px; }
+      .chip { font-size: 22px; padding: 10px 22px; border-radius: 999px; background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); }
+      .chip.lime { background: var(--lime); color: var(--ink); font-weight: 600; box-shadow: none; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="logo">
+        <svg width="124" height="124" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1c1f26"/><g stroke-width="9" stroke-linecap="round"><path d="M15.34 34.14 21 39.8" stroke="#d4ff3f"/><path d="M33 39.8 48.56 24.24" stroke="#eef0f4"/></g></svg>
+        <h1>DoD <span class="mono">lint</span></h1>
+      </div>
+      <p id="tagline"></p>
+      <div class="chips" id="chips"></div>
+    </div>
+    <script>
+      // En español por defecto; ?lang=en para el README en inglés.
+      const T = {
+        es: { tagline: 'Definición de hecho para sistemas de diseño en Figma', chips: ['15 reglas', 'Variables, modos y slots', 'Correcciones seguras'], free: 'Gratis' },
+        en: { tagline: 'Definition of Done for design systems in Figma', chips: ['15 checks', 'Variables, modes & slots', 'Safe fixes'], free: 'Free' },
+      };
+      const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'es';
+      document.documentElement.lang = lang;
+      document.getElementById('tagline').textContent = T[lang].tagline;
+      document.getElementById('chips').innerHTML = T[lang].chips.map((c) => `<span class="chip">${c}</span>`).join('') + `<span class="chip lime">${T[lang].free}</span>`;
+    </script>
+  </body>
+</html>

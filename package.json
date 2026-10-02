@@ -1,0 +1,19 @@
+{
+  "name": "dod-lint",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Definición de hecho para sistemas de diseño en Figma: 15 comprobaciones (también de slots y de contraste en todos los modos), informe en Markdown y correcciones seguras.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.test.json",
+    "test": "node scripts/test.mjs",
+    "support-page": "node scripts/support-page.mjs"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.138.0",
+    "@types/node": "^24.19.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.6.0"
+  }
+}

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DoD Lint · Help and support</title>
+    <meta name="description" content="DoD Lint is a Figma plugin that checks a design system against a Definition of Done: auto layout, tokens, states, overlapping variants, touch targets, real content, component properties, slots, documentation, detached instances, broken references and text contrast. It lists each problem on the layer that has it and fixes the ones with a single right answer." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%20aria-hidden%3D%22true%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23111318%22%2F%3E%3Cg%20stroke-width%3D%229%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M15.34%2034.14%2021%2039.8%22%20stroke%3D%22%23d4ff3f%22%2F%3E%3Cpath%20d%3D%22M33%2039.8%2048.56%2024.24%22%20stroke%3D%22%23eef0f4%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" />
+    <style>
+      @font-face { font-family: 'Geist'; src: url('fonts/Geist-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+      @font-face { font-family: 'Geist Mono'; src: url('fonts/GeistMono-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+      /* Generada con scripts/support-page.mjs a partir de docs/support.md: los cambios, allí. */
+      :root {
+        --ink: #111318; --tile: #1c1f26; --mist: #eef0f4; --slate: #8a90a2; --lime: #d4ff3f;
+        --bg: #ffffff; --text: var(--ink); --muted: #555b69; --line: #e3e5ea; --surface: #f4f5f7; --link: var(--ink);
+        --sans: Geist, Inter, -apple-system, 'Segoe UI', system-ui, sans-serif;
+        --mono: 'Geist Mono', ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: var(--ink); --text: var(--mist); --muted: #a3a9b8; --line: #2a2e37; --surface: var(--tile); --link: var(--lime); }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+      header { background-color: var(--ink); background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px); background-size: 20px 20px; color: var(--mist); border-bottom: 1px solid #2a2e37; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; padding: 20px 0 0; color: var(--mist); text-decoration: none; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+      .brand svg { display: block; }
+      .mono { font-family: var(--mono); font-weight: 500; color: var(--lime); }
+      .hero { padding: 40px 0 28px; }
+      h1 { font-size: clamp(34px, 7vw, 48px); line-height: 1.05; letter-spacing: -0.035em; margin: 0 0 14px; text-wrap: balance; }
+      .lead { color: #a3a9b8; font-size: 18px; margin: 0; max-width: 640px; text-wrap: pretty; }
+      nav { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 0 22px; }
+      nav a { color: var(--mist); text-decoration: none; font-size: 14px; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.06); }
+      nav a:hover, nav a:focus-visible { background: var(--lime); color: var(--ink); }
+      main { padding: 8px 16px 48px; }
+      h2 { font-size: 26px; line-height: 1.2; letter-spacing: -0.02em; margin: 48px 0 12px; display: flex; align-items: center; gap: 10px; }
+      h2::before { content: ''; flex: none; width: 10px; height: 10px; border-radius: 3px; background: var(--lime); box-shadow: 0 0 0 1px rgba(17, 19, 24, 0.12); }
+      h3 { font-size: 17px; line-height: 1.35; margin: 28px 0 4px; }
+      p { margin: 0 0 14px; text-wrap: pretty; }
+      a { color: var(--link); text-decoration-color: var(--slate); text-underline-offset: 3px; }
+      a:hover { text-decoration-color: currentColor; }
+      main a:focus-visible, .brand:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; border-radius: 3px; }
+      code { font-family: var(--mono); font-size: 0.88em; background: var(--surface); border: 1px solid var(--line); padding: 0 5px; border-radius: 5px; }
+      ul, ol { margin: 0 0 16px; padding-left: 22px; }
+      li { margin: 4px 0; }
+      li > ul { margin: 4px 0 0; }
+      ul > li::marker { color: var(--slate); }
+      ol { list-style: none; padding: 0; counter-reset: step; }
+      ol > li { counter-increment: step; position: relative; padding-left: 40px; margin: 10px 0; }
+      ol > li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 7px; background: var(--ink); color: var(--lime); font: 500 13px/26px var(--mono); text-align: center; box-shadow: 0 0 0 1px #2a2e37; }
+      .table { overflow-x: auto; margin: 0 0 16px; border: 1px solid var(--line); border-radius: 10px; }
+      table { border-collapse: collapse; width: 100%; font-size: 15px; }
+      th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-top: 1px solid var(--line); }
+      thead th { border-top: 0; background: var(--surface); font-weight: 600; }
+      td:first-child { font-weight: 600; min-width: 150px; }
+      footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+      footer .wrap { display: flex; align-items: center; gap: 10px; padding: 20px 16px 32px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <a class="brand" href="#"><svg width="32" height="32" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1c1f26"/><g stroke-width="9" stroke-linecap="round"><path d="M15.34 34.14 21 39.8" stroke="#d4ff3f"/><path d="M33 39.8 48.56 24.24" stroke="#eef0f4"/></g></svg><span>DoD <span class="mono">lint</span></span></a>
+        <div class="hero">
+          <h1>Help and support</h1>
+          <p class="lead">DoD Lint is a Figma plugin that checks a design system against a Definition of Done: auto layout, tokens, states, overlapping variants, touch targets, real content, component properties, slots, documentation, detached instances, broken references and text contrast. It lists each problem on the layer that has it and fixes the ones with a single right answer.</p>
+        </div>
+        <nav aria-label="Contents"><a href="#getting-started">Getting started</a><a href="#the-checks">The checks</a><a href="#slots">Slots</a><a href="#settings">Settings</a><a href="#faq">FAQ</a><a href="#privacy-policy">Privacy policy</a><a href="#contact">Contact</a></nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <h2 id="getting-started">Getting started</h2>
+      <ol><li>Open a Figma design file and run <strong>Plugins → DoD Lint</strong>.</li><li>Choose what to audit: <strong>Selection</strong>, <strong>Page</strong> or <strong>File</strong> (every page).</li><li>Click <strong>Audit</strong>. To choose which checks run, open <strong>Settings</strong> (the sliders icon): the rules are at the top. Settings are saved in the file, so everyone who opens it with DoD Lint audits with them; only the language is yours alone.</li><li>Click a finding to select that layer on the canvas.</li><li><strong>Fix all</strong> on a check applies every safe fix of that check in one go, and the wrench button on a row, which names the variable it binds, fixes just that row. Each batch is a single undo step, and a notice at the bottom offers <strong>Undo</strong> for a few seconds. It removes the whole batch as long as nothing else has changed in the file since. While DoD Lint has the focus, Figma doesn't receive its shortcuts, so DoD Lint handles Ctrl+Z (Cmd+Z on Mac) itself: it does what the notice offers, or else passes the undo on to Figma. To redo, click the canvas and press Ctrl+Shift+Z (Cmd+Shift+Z on Mac).</li><li><strong>Report</strong> gives you the audit in Markdown, to copy or download.</li></ol>
+      <h2 id="the-checks">The checks</h2>
+      <div class="table"><table><thead><tr><th>Check</th><th>What it flags</th></tr></thead><tbody><tr><td>Auto layout at every level</td><td>Frames and groups with two or more children and no auto layout. Top-level artboards, icons and vector art are skipped.</td></tr><tr><td>Padding, gap and radius use tokens</td><td>Values typed by hand, and values off your spacing and radius scale. A radius that already makes a pill is bound to the scale’s largest step, so it stays a pill at any size. If no spacing (or radius) variables are in use at all, a note says how many values were typed by hand instead of flagging every layer.</td></tr><tr><td>Text styles and resizing</td><td>Text without a text style or typography variables; fixed-size text boxes without truncation.</td></tr><tr><td>Colors use tokens</td><td>Solid fills and strokes with a literal color and no variable or style. The frame of a variant set, which no instance inherits, isn’t checked.</td></tr><tr><td>Semantic tokens, not primitives</td><td>Fills and strokes bound straight to a variable from a primitive collection. Palette swatches named after the primitive they show are skipped.</td></tr><tr><td>Complete states</td><td>Sets whose State axis is missing states, and interactive components without one. Buttons need Default, Hover, Pressed, Focus and Disabled; fields and selection controls, the same without Pressed. States are recognized in English, Spanish, French, German, Portuguese and Italian, with their synonyms (Enabled = Default, Active = Pressed).</td></tr><tr><td>Variants don’t overlap</td><td>Variants in a set that overlap on the canvas. If one covers half or more of another, they’re stacked and the one below goes unnoticed.</td></tr><tr><td>Minimum touch target</td><td>Interactive components whose shorter side is below the minimum: 24 px by default, the WCAG 2.2 AA one. With a higher minimum, small sizes (Size=sm, xs, compact…) only need 24 px.</td></tr><tr><td>Real content, not placeholders</td><td>Generic default text in components (&quot;Text&quot;, &quot;Label&quot;, &quot;Button&quot;…) and lorem ipsum anywhere. If it’s the default value of a text property, which each instance changes, it’s listed as info.</td></tr><tr><td>Exposed properties</td><td>Components with text but no text property, or a swappable icon with no instance swap or boolean.</td></tr><tr><td>Slots defined and respected</td><td>See <a href="#slots">Slots</a>.</td></tr><tr><td>Description and documentation</td><td>Components without a useful description and, if you turn it on in settings, without a documentation link. Icons don’t count.</td></tr><tr><td>No detached instances</td><td>Frames detached from their component, which no longer get its changes. The component is named if it’s local. If it was deleted, it’s listed as info: there’s nothing to relink.</td></tr><tr><td>Broken references</td><td>Variables, styles and main components that no longer resolve, and modes set on layers or pages for collections that no longer exist. On an instance of a component in the same file, only what it overrides: the rest is checked in the component. From a library or a deleted component, the whole instance is checked.</td></tr><tr><td>Text contrast</td><td>WCAG contrast against the effective background, in each text's own mode and, inside components, in every mode its colors depend on (light and dark, roles, brands). A mode set on a frame or the page is respected.</td></tr></tbody></table></div>
+      <h2 id="slots">Slots</h2>
+      <ul><li>Content placed in an instance's slots is audited like any other layer.</li><li>A slot's default content is checked once, in its component, and not again in every instance.</li><li>In components, DoD Lint flags:<ul><li>slot properties with no layer;</li><li>slots without auto layout;</li><li>default content that breaks the slot's own limits;</li><li>&quot;Only allow preferred instances&quot; with an empty list;</li><li>slot properties without a description.</li></ul></li><li>In instances, it flags slots below their minimum (including a required slot left empty), above their maximum, or with content outside the preferred instances, using the limits Figma calculates.</li><li>Fixes are never offered on a slot's default content inside an instance: in Figma, editing one layer of a slot overrides the whole slot, and it stops receiving changes from its component.</li></ul>
+      <h2 id="settings">Settings</h2>
+      <ul><li><strong>Language:</strong> Automatic (your system language), English or Español.</li><li><strong>Primitive collections:</strong> detected automatically (hidden from publishing, or named like primitives, and with no aliases) or picked by hand.</li><li><strong>Thresholds:</strong> minimum control size, required states for buttons and for fields, the names that identify an interactive control, minimum description length, whether to require a documentation link (off by default) and ignored layer prefixes (<code>_</code> and <code>.</code> by default).</li><li><strong>Traversal:</strong> include hidden layers, go inside instances, require auto layout on top-level frames, check spacing and radius only inside components, and snap to the nearest scale step when fixing (off by default, because it changes the measurement).</li><li><strong>Spacing and radius only inside components</strong> is for library files, where documentation, sketches and sample screens would bury the components' findings. It's off by default: in a product file, the screens are what you want to check. Another way to leave documentation out is to start its frames' names with an ignored prefix.</li></ul>
+      <p>Everything except the language is saved in the file, so everyone who opens it with DoD Lint audits with the same settings.</p>
+      <h2 id="faq">FAQ</h2>
+      <h3 id="does-dod-lint-change-my-file">Does DoD Lint change my file?</h3>
+      <p>Only when you click Fix or ignore a finding. Audits only read. Saving settings writes the list of primitive collections into the file's plugin data, and ignoring a finding writes it there too.</p>
+      <h3 id="how-long-does-an-audit-take">How long does an audit take?</h3>
+      <p>Under 1 ms per layer: the 20,000 layers of the Buttons page in Material 3 take about 16 seconds, and a page with 3,000 layers a few seconds. The first audit in a file can take longer while the variables of its libraries load. You can switch to another window while it runs, and it keeps going, except for that first load of library variables, which waits until Figma is back in front. <strong>Cancel</strong> stops it at any point.</p>
+      <h3 id="how-do-i-ignore-a-finding">How do I ignore a finding?</h3>
+      <p>Click the crossed-out eye on its row, left of the fix button: that rule is ignored on that layer, for anyone who opens the file with DoD Lint. Ignored findings don't count, aren't fixed and are listed apart in the report. Click &quot;Ignored&quot; to see them, and the eye to bring one back. Right after ignoring, the notice at the bottom can undo it too. For text inside instances, which is listed once, it ignores that component text in all its instances.</p>
+      <h3 id="where-are-the-info-findings">Where are the info findings?</h3>
+      <p>The list starts with errors and warnings. Click <strong>Info</strong> to see the rest: notes that don't break the Definition of Done, such as placeholder text that is a property's default value, or an instance detached from a component that was deleted. If only info findings are left, the list says the Definition of Done is met.</p>
+      <h3 id="why-does-a-row-say-18-of-36-variants">Why does a row say &quot;18 of 36 variants&quot;?</h3>
+      <p>The same finding on the same layer in several variants of a set is listed once. Clicking the row selects all those layers, so you can fix them together in Figma; its fix button fixes them all and the eye ignores them all.</p>
+      <h3 id="i-fixed-something-by-hand-do-i-have-to-audit-again">I fixed something by hand. Do I have to audit again?</h3>
+      <p>No. When the page or a style changes after an audit, also by someone else, a bar above the results offers <strong>Update the list</strong>: it runs the checks again only on the layers that have findings, and on the ones fixed since the audit in case a fix was undone, and updates their rows in place. Changes made by DoD Lint itself (fixing, ignoring, saving settings) don't count. New problems on layers that had no findings only show up with a new audit.</p>
+      <h3 id="are-the-layers-inside-instances-checked">Are the layers inside instances checked?</h3>
+      <p>Only for what the instance changes in them: fills, strokes, padding, gap, radius, typography and text content overridden on the instance or on any layer inside it, nested instances included. The rest comes from the main component, which is checked where it's defined. The content placed in its slots is checked in full. Turn on &quot;Go inside instances&quot; to check everything.</p>
+      <p>Text contrast is the exception: it depends on where the instance is placed and in which mode, so the text inside every instance is checked where it sits. If the same text of a component gets the same result in several instances, it's listed once with the count.</p>
+      <h3 id="why-arent-the-labels-on-my-canvas-checked">Why aren't the labels on my canvas checked?</h3>
+      <p>Text placed straight on the page or in a section, outside any frame, titles or annotates what's next to it and isn't part of a design. Colors, text styles, placeholders and contrast skip it; broken references are still checked.</p>
+      <h3 id="are-hidden-layers-checked">Are hidden layers checked?</h3>
+      <p>Hidden layers are skipped, except those a boolean component property or a variable can show: they appear as soon as someone turns them on, so they're checked anyway. Turn on &quot;Include hidden layers&quot; to check everything.</p>
+      <h3 id="why-cant-this-finding-be-fixed-automatically">Why can't this finding be fixed automatically?</h3>
+      <p>A fix is offered only when there's a single right answer. That means exactly one variable with that exact value whose scope covers that use (a frame fill, a text fill, a stroke…), exactly one semantic variable pointing to that primitive, or a broken reference to remove.</p>
+      <h3 id="some-fixes-were-skipped">Some fixes were skipped.</h3>
+      <p>Before applying a fix, DoD Lint checks that the layer and the variable are still as they were during the audit. If you edited the layer, applied a style or changed the variable since then, that fix is skipped. Click <strong>Update the list</strong>, in the bar above the results, to see where those layers stand now.</p>
+      <h3 id="some-text-says-it-couldnt-be-evaluated-for-contrast">Some text says it couldn't be evaluated for contrast.</h3>
+      <p>Text over an image, a gradient or a mixed color, or with no solid background under it, can't be measured reliably, so it's counted apart. Inside a component, the background has to be the component's own: text in a transparent component is measured where its instances are placed, not against the canvas around it.</p>
+      <h3 id="how-do-i-check-the-dark-theme">How do I check the dark theme?</h3>
+      <p>For components you don't need to switch modes: text inside a component is checked in every mode of the collections its colors depend on, and the finding says which mode fails (&quot;Contrast 2.9:1 in Dark…&quot;). Screens and documentation are checked in the mode they have, so a dark screen is checked in dark and a light one in light. A mode you set on a component, a frame or a page is respected.</p>
+      <h3 id="does-it-work-with-variables-from-a-library">Does it work with variables from a library?</h3>
+      <p>Yes. The color and number variables of the libraries enabled in the file count like the file's own: fixes can bind them, the spacing and radius scale includes them, and primitives a library publishes are recognized. DoD Lint imports them when it opens, in the background, with Figma's team library permission. For a library of 120 variables that takes about four seconds the first time in a file and a second or two after that; an audit started before it's done waits for it, and the panel shows how many it has loaded. Importing doesn't change your file.</p>
+      <p>Figma's UI kits (Material 3, Simple Design System…) count too when the file uses one of their components, but only for what the file and its libraries don't have of their own: colors, spacing or radius. A stray Material 3 component in a file with its own colors doesn't change anything. The first time in a file, a large kit can take about ten seconds to load.</p>
+      <h3 id="is-dod-lint-free">Is DoD Lint free?</h3>
+      <p>Yes, all of it: selection, page and whole-file audits, with every check, fixes and the Markdown report.</p>
+      <h2 id="privacy-policy">Privacy policy</h2>
+      <p>DoD Lint doesn't collect, store or send personal data or file content. It has no network access (declared in its manifest), no analytics and no third-party services. It reads the variables of the libraries enabled in the file, through Figma, to suggest them as fixes; nothing leaves Figma.</p>
+      <p>It only stores three things:</p>
+      <ul><li>your language, in Figma's local plugin storage on your computer;</li><li>the settings (rules, thresholds, primitive collections and traversal), in the file's own plugin data, so everyone who opens the file with DoD Lint audits with the same ones;</li><li>the findings you choose to ignore, also in the file's own plugin data.</li></ul>
+      <p>Last updated: 2 October 2026.</p>
+      <h2 id="contact">Contact</h2>
+      <p>Found a bug or have a question? <a href="https://github.com/jm-fuster/dod-lint/issues">Open an issue</a> and include what you expected, what happened, the check involved and, if you can, the type of layer. Please don't attach confidential files. Replies usually come within a few working days.</p>
+    </main>
+    <footer>
+      <div class="wrap"><svg width="20" height="20" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1c1f26"/><g stroke-width="9" stroke-linecap="round"><path d="M15.34 34.14 21 39.8" stroke="#d4ff3f"/><path d="M33 39.8 48.56 24.24" stroke="#eef0f4"/></g></svg><span>DoD Lint · Free · Nothing leaves Figma</span></div>
+    </footer>
+  </body>
+</html>

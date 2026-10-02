@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html, body { margin: 0; background: #fff; overflow: hidden; }
+      /* La UI del plugin mide 440 × 700; zoom 2 la rasteriza a doble resolución sin cambiar su maquetación. */
+      iframe { border: 0; width: 440px; height: 700px; zoom: 2; display: block; }
+    </style>
+  </head>
+  <body>
+    <iframe id="f"></iframe>
+    <script>document.getElementById('f').src = 'harness.html' + location.search;</script>
+  </body>
+</html>

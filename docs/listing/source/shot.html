@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      /* Enmarca una captura del panel (880 × 1400) para el README: esquinas redondeadas, borde fino y sombra suave
+         sobre fondo transparente. Con zoom 2, como frame.html, y una ventana de 976 × 1496. */
+      html, body { margin: 0; background: transparent; overflow: hidden; }
+      .pad { zoom: 2; width: 440px; padding: 24px; }
+      img { display: block; width: 440px; height: 700px; border-radius: 16px; box-shadow: 0 0 0 1px rgba(17, 19, 24, 0.1), 0 10px 30px rgba(17, 19, 24, 0.16); }
+    </style>
+  </head>
+  <body>
+    <div class="pad"><img id="shot" alt="" /></div>
+    <script>document.getElementById('shot').src = new URLSearchParams(location.search).get('img');</script>
+  </body>
+</html>
