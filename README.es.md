@@ -11,6 +11,10 @@
 </p>
 
 <p align="center">
+  <a href="https://www.figma.com/community/plugin/1687960342520583098"><img alt="Consíguelo en Figma Community" src="https://img.shields.io/badge/Cons%C3%ADguelo_en-Figma_Community-D4FF3F?style=for-the-badge&labelColor=111318&logo=figma&logoColor=white"></a>
+</p>
+
+<p align="center">
   <a href="README.md">English</a> · <b>Español</b>
 </p>
 
@@ -85,7 +89,7 @@ Es gratis, todo: auditar la selección, la página o el archivo entero, aplicar 
 
 ## Cómo se usa
 
-1. Abre un archivo de diseño de Figma y ejecuta **Plugins → DoD Lint**. Hasta que esté en Community, se carga desde el código (ver [Desarrollo](#desarrollo)).
+1. Consigue DoD Lint en [Figma Community](https://www.figma.com/community/plugin/1687960342520583098), abre un archivo de diseño y ejecuta **Plugins → DoD Lint**.
 2. Elige qué auditar: **Selección**, **Página** o **Archivo** (todas las páginas).
 3. Pulsa **Auditar**. Las reglas que se pasan están en **Ajustes** (el icono de los deslizadores) y se guardan en el archivo, así que quien lo abra con DoD Lint audita con la misma Definición de hecho.
 4. Pulsa un hallazgo para seleccionar su capa en el lienzo.

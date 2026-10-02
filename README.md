@@ -11,6 +11,10 @@
 </p>
 
 <p align="center">
+  <a href="https://www.figma.com/community/plugin/1687960342520583098"><img alt="Get it on Figma Community" src="https://img.shields.io/badge/Get_it_on-Figma_Community-D4FF3F?style=for-the-badge&labelColor=111318&logo=figma&logoColor=white"></a>
+</p>
+
+<p align="center">
   <b>English</b> · <a href="README.es.md">Español</a>
 </p>
 
@@ -85,7 +89,7 @@ It's free, all of it: selection, page and whole-file audits, fixes and the repor
 
 ## Getting started
 
-1. Open a Figma design file and run **Plugins → DoD Lint**. Until it's on Figma Community, you can load it from the code (see [Development](#development)).
+1. Get DoD Lint from [Figma Community](https://www.figma.com/community/plugin/1687960342520583098), open a design file and run **Plugins → DoD Lint**.
 2. Choose what to audit: **Selection**, **Page** or **File** (every page).
 3. Click **Audit**. The checks that run are in **Settings** (the sliders icon), and they're saved in the file, so everyone who opens it with DoD Lint audits against the same Definition of Done.
 4. Click a finding to select its layer on the canvas.

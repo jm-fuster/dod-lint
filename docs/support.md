@@ -4,7 +4,7 @@ DoD Lint is a Figma plugin that checks a design system against a Definition of D
 
 ## Getting started
 
-1. Open a Figma design file and run **Plugins → DoD Lint**.
+1. Get DoD Lint from [Figma Community](https://www.figma.com/community/plugin/1687960342520583098), open a Figma design file and run **Plugins → DoD Lint**.
 2. Choose what to audit: **Selection**, **Page** or **File** (every page).
 3. Click **Audit**. To choose which checks run, open **Settings** (the sliders icon): the rules are at the top. Settings are saved in the file, so everyone who opens it with DoD Lint audits with them; only the language is yours alone.
 4. Click a finding to select that layer on the canvas.

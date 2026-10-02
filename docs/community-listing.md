@@ -1,5 +1,7 @@
 # Ficha de Figma Community
 
+Publicada: https://www.figma.com/community/plugin/1687960342520583098. Se envió la noche del 02-10-2026 y el 03-10 ya estaba aprobada, mucho antes del mes largo que se esperaba.
+
 Borrador para enviar a revisión. Cada bloque va en el campo del mismo nombre del formulario de publicación (Figma Desktop → Plugins → Development → Manage plugins → Publish). Los textos de la ficha están en inglés; las notas, en español.
 
 Requisitos del formulario comprobados el 28-09-2026 en el centro de ayuda de Figma: icono de 128 × 128 px, miniatura de 1920 × 1080 px, hasta 9 imágenes o vídeos en el carrusel, hasta 12 etiquetas, contacto de soporte obligatorio, formulario de seguridad de datos opcional (su revisión tarda hasta dos semanas). Precio en dólares enteros, mínimo 2 $.
@@ -130,11 +132,11 @@ Un archivo de Community con componentes y pantallas preparados para que se prueb
 - [x] Plugin creado en Figma y su `id` en `manifest.json`: `1687960342520583098` (02-10-2026, generado en el formulario de publicación).
 - [ ] Probar el build en Figma Desktop importando el manifiesto: auditoría, selección de hallazgos, correcciones, Cancelar, redimensionar, informe y los dos idiomas.
 - [x] Build de lanzamiento gratuito (01-10-2026): sin el permiso `payments` en el manifiesto, archivo, correcciones e informe quedan desbloqueados, sin la insignia Pro ni los candados, y el pie dice «Gratis, y sin conexión a internet: todo se queda en Figma» (desde el 02-10-2026, al pasar a gratis del todo). El código de pago se conserva, inactivo, y `docs/support.md` no habla de Pro.
-- [ ] Compilar con `node scripts/build.mjs --prod`. Comprobado el 02-10-2026 (`code.js` 98 KB, `ui.html` 79 KB, sin avisos de depuración); repetirlo justo antes de enviar, ya con el `id` real.
+- [x] Compilar con `node scripts/build.mjs --prod`. Comprobado el 02-10-2026 (`code.js` 98 KB, `ui.html` 79 KB, sin avisos de depuración); repetirlo justo antes de enviar, ya con el `id` real.
 - [ ] Cuenta: doble factor activado.
-- [ ] Página de soporte publicada en https://jm-fuster.github.io/dod-lint/. La publica `.github/workflows/pages.yml`, que la regenera desde `docs/support.md`, en cuanto el repositorio sea público y Pages esté activado: ver «Abrir el repositorio» en `docs/desarrollo.md`. El contacto son los issues del repositorio.
+- [x] Página de soporte publicada en https://jm-fuster.github.io/dod-lint/. La publica `.github/workflows/pages.yml`, que la regenera desde `docs/support.md`, en cuanto el repositorio sea público y Pages esté activado: ver «Abrir el repositorio» en `docs/desarrollo.md`. El contacto son los issues del repositorio.
 - [x] Miniatura e imágenes del carrusel, rehechas con la UI nueva y la marca (02-10-2026). Icono nuevo: `docs/listing/icon-128.png`.
-- [ ] Formulario de seguridad de datos, con las respuestas de [su sección](#formulario-de-seguridad-de-datos).
+- [x] Formulario de seguridad de datos, con las respuestas de [su sección](#formulario-de-seguridad-de-datos), rellenado al publicar.
 
 ## Si algún día se añade una función de pago
 

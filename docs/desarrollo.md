@@ -205,6 +205,19 @@ En el plugin, con Figma delante, Buttons de Material 3 tardaba 39,6 s por la ma�
 
 ## Publicar
 
+Publicado en Figma Community el 03-10-2026: https://www.figma.com/community/plugin/1687960342520583098
+
+### Publicar una versión nueva
+
+1. `npm run typecheck` y `npm test`.
+2. `node scripts/build.mjs --prod`.
+3. Probarlo en Figma Desktop: el plugin importado desde `manifest.json` ejecuta lo que hay en `dist/`.
+4. En Figma Desktop: **Plugins → Manage plugins**, «…» junto a DoD Lint y **Publish new version**, con las notas de la versión.
+
+Las versiones nuevas no pasan revisión: llegan a todos los usuarios al momento, y nadie puede volver a una anterior por su cuenta. Si una sale mal, se vuelve a publicar la anterior. El `id` del manifiesto (`1687960342520583098`) no se toca nunca: es el que une cada versión con la ficha. Despublicarlo (en la ficha, **Manage resource → Unpublish**) lo quita de Community y deja a sus usuarios sin él, y un plugin publicado desde un perfil personal no se puede transferir a otra cuenta.
+
+### Cómo se publicó
+
 Decisión del 02-10-2026: se publica gratis, todo y desde el primer día. Los textos, las etiquetas, las imágenes y la lista de comprobación están en [`docs/community-listing.md`](community-listing.md), y la página de soporte, que es la URL de contacto obligatoria, en [`docs/support.md`](support.md).
 
 1. Crear el plugin en Figma (**Plugins → Development → New plugin**) para obtener un `id` real y copiarlo a `manifest.json`.
@@ -215,12 +228,12 @@ Reglas de revisión que este plugin respeta: no ofrece chat de IA ni servidor MC
 
 ### Abrir el repositorio
 
-El repositorio es privado hasta que se publique el plugin. Va sin licencia (decisión del 02-10-2026): todos los derechos reservados, como explican los README. Se puede pasar a MIT más adelante; al revés no, porque lo publicado con MIT se queda con MIT. Para abrirlo:
+Se abrió el 02-10-2026, con estos pasos, que sirven también para otro repositorio. Va sin licencia (decisión del 02-10-2026): todos los derechos reservados, como explican los README. Se puede pasar a MIT más adelante; al revés no, porque lo publicado con MIT se queda con MIT.
 
 1. Pasarlo a público: `gh repo edit jm-fuster/dod-lint --visibility public --accept-visibility-change-consequences`.
 2. Activar Pages con GitHub Actions como origen: `gh api -X POST repos/jm-fuster/dod-lint/pages -f build_type=workflow`. En el plan gratuito no se puede antes, con el repositorio privado.
 3. Publicar la página de soporte: `gh workflow run pages.yml`. Queda en https://jm-fuster.github.io/dod-lint/, y desde entonces se vuelve a publicar sola con cada cambio de `docs/support.md`, `docs/site/` o `scripts/support-page.mjs` en `main`. Mientras el repositorio era privado, el flujo se saltaba sin hacer nada.
-4. Ponerla como web del repositorio: `gh repo edit jm-fuster/dod-lint --homepage https://jm-fuster.github.io/dod-lint/`.
+4. Ponerla como web del repositorio: `gh repo edit jm-fuster/dod-lint --homepage https://jm-fuster.github.io/dod-lint/`. Desde el 03-10-2026, con el plugin publicado, la web del repositorio es su ficha de Community, y la página de soporte se enlaza desde los README.
 5. A mano, en GitHub: el banner (`docs/readme/en/banner.png`) como vista previa social, en Settings del repositorio, y «Keep my email addresses private» en la cuenta.
 
 <details>
