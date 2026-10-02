@@ -77,7 +77,61 @@ design system, linter, design tokens, variables, modes, slots, audit, accessibil
 - **Contacto de soporte:** la URL de la página de soporte.
 - **Acceso a red:** `None`. Coincide con el manifiesto (`allowedDomains: ["none"]`).
 - **Comentarios:** activados. Son la primera vía de feedback y dan señal social a la ficha.
-- **Seguridad de datos:** rellenarlo. Todas las respuestas son "no": el plugin no recoge datos, no los envía a ningún sitio y no usa terceros.
+- **Seguridad de datos:** rellenarlo con las respuestas de la sección siguiente. Casi todas son «no», salvo la del almacenamiento: los ajustes y los ignorados se guardan en el archivo, con el almacenamiento de Figma.
+
+## Formulario de seguridad de datos
+
+Es opcional. Figma lo revisa en hasta dos semanas, y mientras tanto el plugin se puede publicar y actualizar. Cuando lo aprueba, la ficha enseña las respuestas a quien tenga la sesión iniciada. Las preguntas son las de «Security disclosure principles», en el centro de ayuda de Figma (comprobadas el 02-10-2026), y las respuestas se han contrastado con el código: el manifiesto, `src/settings.ts` y `src/ignore.ts`.
+
+Respuestas en inglés, para copiar:
+
+**1. Do you host a backend service for your plugin or widget?** → **No**
+
+```
+DoD Lint has no backend. It runs entirely inside Figma: the plugin code in Figma's sandbox and the panel in Figma's plugin window.
+```
+
+Las preguntas 1b (proceso para vulnerabilidades) y 1c (certificaciones de seguridad) solo se piden con un backend: no aplican.
+
+**2. Does your plugin or widget make network requests with services you don't host?** → **No**
+
+```
+DoD Lint makes no network requests. Its manifest declares "networkAccess": { "allowedDomains": ["none"] }, so Figma blocks any request, and the panel loads no external fonts, scripts or images.
+```
+
+**3. Does your plugin or widget have user authentication?** → **No**
+
+```
+There are no accounts, sign-ins or credentials, and the plugin doesn't read who the user is.
+```
+
+La 3b (cómo se protegen las credenciales) no aplica.
+
+**4. Do you store any data read or derived from Figma's plugin or widget API?** → **Sí, solo con el almacenamiento de Figma.** Si el formulario solo deja elegir «Yes» o «No», «Yes» con este texto:
+
+```
+Only in the storage Figma provides; nothing leaves Figma.
+
+- In the file's plugin data: the audit settings that differ from the defaults (enabled checks, thresholds, the IDs of the variable collections marked as primitive, traversal options) and the findings a user chose to ignore (check ID, layer ID and the date). They are kept in the file so that everyone who opens it with DoD Lint audits with the same settings, and they are only written when someone saves the settings or ignores or restores a finding.
+- In Figma's client storage, on the user's computer: the interface language.
+
+Audits only read the file. Findings and reports stay in the plugin window and are gone when it closes, unless the user copies or downloads the Markdown report.
+```
+
+La 4b (cómo y dónde se guarda) y la 4c (quién accede) solo se piden si algo se guarda fuera de Figma. Si aun así salen:
+
+```
+4b. In the Figma file's plugin data and in Figma's client storage. Nothing is stored outside Figma.
+4c. Anyone who can open the file can see its settings and ignored findings through DoD Lint. The language stays on the user's computer. The developer has no access to any of it.
+```
+
+**5. How do you manage updates to your plugin?**
+
+```
+The source code is public at https://github.com/jm-fuster/dod-lint, where bugs and questions are tracked as issues. Before each release the code is type-checked, passes an automated suite of more than 200 tests that run every check against a simulated Figma API, and is tried in Figma Desktop. Updates ship only as new versions published to Figma Community. The plugin has no network access and loads no code at run time, so what runs is always the published version. It has no runtime dependencies; the build only uses esbuild and TypeScript.
+```
+
+La primera frase da por hecho que el repositorio ya es público. Si el formulario se envía antes, hay que quitarla.
 
 ## Precio
 
@@ -120,7 +174,7 @@ Un archivo de Community con componentes y pantallas preparados para que se prueb
 - [ ] Cuenta: doble factor activado.
 - [ ] Página de soporte publicada y su URL en la descripción. Ya está hecha con la marca: `docs/site/index.html`, que sale de `docs/support.md` con `npm run support-page`. Falta alojarla. El contacto son los issues del repositorio, que funcionan en cuanto sea público.
 - [x] Miniatura e imágenes del carrusel, rehechas con la UI nueva y la marca (02-10-2026). Icono nuevo: `docs/listing/icon-128.png`.
-- [ ] Formulario de seguridad de datos.
+- [ ] Formulario de seguridad de datos, con las respuestas de [su sección](#formulario-de-seguridad-de-datos).
 
 ## Si algún día se añade una función de pago
 
